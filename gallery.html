@@ -4,9 +4,18 @@
     <meta charset="UTF-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Image Gallery</title>
+    <title>Responsive Image & Video Gallery</title>
     <link rel="stylesheet" href="gallery.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #ecf4fb;
+        }
+
         /* General Button Styling */
         .button {
             position: fixed;
@@ -23,7 +32,7 @@
             background: red;
         }
 
-        /* Home Button - Positioned at the top left */
+        /* Home Button */
         #homeButton {
             top: 15px;
             left: 15px;
@@ -32,7 +41,7 @@
             border-radius: 10px;
         }
 
-        /* Play Button - Positioned at the bottom right */
+        /* Play Button */
         #playButton {
             bottom: 15px;
             right: 15px;
@@ -41,6 +50,47 @@
             height: 55px;
             text-align: center;
             line-height: 55px;
+        }
+
+        #playButton:hover {
+            background: rgba(255, 77, 77, 0.9);
+            color: white;
+        }
+
+        /* Video Container (Horizontal Scroll) */
+        .video-container {
+            width: 80%;
+            margin: 50px auto;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            gap: 10px;
+            padding-bottom: 10px;
+        }
+
+        .video-container video {
+            width: 100%;
+            max-width: 250px; /* Matches images */
+            border-radius: 10px;
+        }
+
+        /* Image Gallery */
+        .wrapper {
+            width: 80%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 30px;
+        }
+
+        .wrapper img {
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .wrapper img:hover {
+            transform: scale(0.9);
         }
     </style>
 </head>
@@ -55,6 +105,26 @@
     <!-- Play Button -->
     <button id="playButton" class="button">▶</button>
 
+    <!-- Video Player (Scrollable) -->
+    <div class="video-container">
+        <video controls playsinline>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls playsinline>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls playsinline>
+            <source src="video3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls playsinline>
+            <source src="video4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
     <!-- Image Gallery -->
     <div class="wrapper">
         <img src="images/image1.png" />
@@ -63,7 +133,6 @@
         <img src="images/image4.jpg" />
         <img src="images/image5.jpg" />
         <img src="images/image6.jpg" />
-        <img src="images/image2.jpg" />
         <img src="images/image7.jpg" />
         <img src="images/image8.jpg" />
         <img src="images/image9.jpg" />
@@ -71,13 +140,15 @@
         <img src="images/image11.jpg" />
         <img src="images/image12.jpg" />
         <img src="images/image13.jpg" />
-        <img src="images/image15.jpg" />
         <img src="images/image14.jpg" />
+        <img src="images/image15.jpg" />
         <img src="images/image16.jpg" />
         <img src="images/image17.jpg" />
         <img src="images/image18.jpg" />
         <img src="images/image19.jpg" />
         <img src="images/image20.jpg" />
+        <img src="images/image21.jpg" />
+        <img src="images/image22.jpg" />
     </div>
 
     <script>

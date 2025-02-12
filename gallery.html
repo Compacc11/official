@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- divinectorweb.com -->
 <head>
     <meta charset="UTF-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Image Gallery</title>
     <link rel="stylesheet" href="gallery.css">
-    
 </head>
 <body>
+
+    <!-- Background Music -->
     <audio id="bgMusic" src="snow.mp3" preload="auto"></audio>
 
-<button onclick="document.getElementById('bgMusic').play()" 
-    style="position: fixed; top: 20px; left: 20px; background: red; color: white; padding: 10px 15px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
-    Play Music 🎶
-</button>
+    <!-- Aesthetic Play Button -->
+    <button id="playButton" onclick="toggleMusic()">▶</button>
 
+    <!-- Image Gallery -->
     <div class="wrapper">
         <img src="images/image1.png" />
         <img src="images/image2.jpg" />
@@ -39,7 +38,25 @@
         <img src="images/image18.jpg" />
         <img src="images/image19.jpg" />
         <img src="images/image20.jpg" />
-        
     </div>
+
+    <!-- JavaScript for Music Play/Pause -->
+    <script>
+        let isPlaying = false;
+        const music = document.getElementById('bgMusic');
+        const playButton = document.getElementById('playButton');
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                playButton.innerHTML = "▶"; // Play icon
+            } else {
+                music.play();
+                playButton.innerHTML = "⏸"; // Pause icon
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
+
 </body>
 </html>

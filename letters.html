@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letters</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffebf0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .envelope {
+            width: 120px;
+            height: 80px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+        .envelope:hover {
+            transform: translateY(-5px);
+        }
+        .pink { background: #ff9aa2; }
+        .red { background: #ff4d4d; }
+        .blue { background: #4da6ff; }
+        .orange { background: #ffad33; }
+        .purple { background: #bf80ff; }
+        .green { background: #66cc66; }
+        .gold { background: #ffd700; }
+        .turquoise { background: #40e0d0; }
+        .brown { background: #a52a2a; }
+        .silver { background: #c0c0c0; }
+        .rainbow {
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            width: 140px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Letters</h1>
+    <div class="container">
+        <a href="sticky.html" class="envelope pink">Letter 1</a>
+        <a href="letter2.html" class="envelope red">Letter 2</a>
+        <a href="letter3.html" class="envelope blue">Letter 3</a>
+        <a href="letter4.html" class="envelope orange">Letter 4</a>
+        <a href="letter5.html" class="envelope purple">Letter 5</a>
+        <a href="letter6.html" class="envelope green">Letter 6</a>
+        <a href="letter7.html" class="envelope gold">Letter 7</a>
+        <a href="letter8.html" class="envelope turquoise">Letter 8</a>
+        <a href="letter9.html" class="envelope brown">Letter 9</a>
+        <a href="letter10.html" class="envelope silver">Letter 10</a>
+        <a href="letter11.html" class="envelope rainbow">Letter 11</a>
+    </div>
+</body>
+</html>

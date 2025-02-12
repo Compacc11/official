@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fefaf6;
+            color: #444;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 90%;
+            padding: 50px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #e63946;
+            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-weight: 300;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .button {
+            display: inline-block;
+            background-color: #e63946;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #d62839;
+        }
+        .gallery-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+        }
+        .gallery {
+            max-width: 80%;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            gap: 15px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 10px 0;
+        }
+        .gallery img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            scroll-snap-align: center;
+            flex-shrink: 0;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .gallery::-webkit-scrollbar {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            p {
+                font-size: 1.2rem;
+            }
+            .gallery img {
+                width: 250px;
+            }
+            .button-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const gallery = document.querySelector(".gallery");
+            gallery.addEventListener("wheel", function(event) {
+                event.preventDefault();
+                gallery.scrollLeft += event.deltaY * 0.3;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="section">
+        <div class="container">
+            <h1>Welcome, My Love</h1>
+            <p>Our journey is a story of love, laughter, and unforgettable moments. Let’s cherish every step together. 💕</p>
+            <div class="button-container">
+                <a href="gallery.html" class="button">Gallery</a>
+                <a href="letters.html" class="button">Letters</a>
+                <a href="music.html" class="button">More</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="images/image2.jpg" alt="Memory 1">
+            <img src="images/image3.jpg" alt="Memory 1">
+            <img src="images/image4.jpg" alt="Memory 1">
+            <img src="images/image5.jpg" alt="Memory 1">
+            <img src="images/image6.jpg" alt="Memory 1"> 
+        </div>
+    </div>
+</body>
+</html>

@@ -6,14 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Image Gallery</title>
     <link rel="stylesheet" href="gallery.css">
+    <style>
+        /* General Button Styling */
+        .button {
+            position: fixed;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: red;
+        }
+
+        /* Home Button - Positioned at the top left */
+        #homeButton {
+            top: 15px;
+            left: 15px;
+            font-size: 18px;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        /* Play Button - Positioned at the bottom right */
+        #playButton {
+            bottom: 15px;
+            right: 15px;
+            font-size: 24px;
+            width: 55px;
+            height: 55px;
+            text-align: center;
+            line-height: 55px;
+        }
+    </style>
 </head>
 <body>
 
     <!-- Background Music -->
-    <audio id="bgMusic" src="snow.mp3" preload="auto"></audio>
+    <audio id="bgMusic" src="snow.mp3" preload="metadata"></audio>
 
-    <!-- Aesthetic Play Button -->
-    <button id="playButton" onclick="toggleMusic()">▶</button>
+    <!-- Home Button -->
+    <button id="homeButton" class="button" onclick="window.location.href='index.html'">🏠</button>
+
+    <!-- Play Button -->
+    <button id="playButton" class="button">▶</button>
 
     <!-- Image Gallery -->
     <div class="wrapper">
@@ -40,7 +80,6 @@
         <img src="images/image20.jpg" />
     </div>
 
-    <!-- JavaScript for Music Play/Pause -->
     <script>
         let isPlaying = false;
         const music = document.getElementById('bgMusic');
@@ -51,11 +90,14 @@
                 music.pause();
                 playButton.innerHTML = "▶"; // Play icon
             } else {
-                music.play();
+                music.play().catch(error => console.log("Playback prevented:", error));
                 playButton.innerHTML = "⏸"; // Pause icon
             }
             isPlaying = !isPlaying;
         }
+
+        // Start music only after user interaction
+        playButton.addEventListener("click", toggleMusic);
     </script>
 
 </body>

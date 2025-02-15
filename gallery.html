@@ -4,7 +4,7 @@
     <meta charset="UTF-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Image & Video Gallery</title>
+    <title>Responsive Media Gallery</title>
     <link rel="stylesheet" href="gallery.css">
     <style>
         * {
@@ -14,162 +14,137 @@
         }
         body {
             background: #ecf4fb;
+            text-align: center;
         }
-
-        /* General Button Styling */
-        .button {
+        .gallery {
+            width: 90%;
+            margin: 50px auto;
+            column-count: auto;
+            column-width: 250px;
+            column-gap: 15px;
+        }
+        .gallery-item {
+            width: 100%;
+            margin-bottom: 15px;
+            break-inside: avoid;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .gallery img, .gallery video {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover, .gallery video:hover {
+            transform: scale(1.05);
+        }
+        .fullscreen {
             position: fixed;
-            background: rgba(255, 0, 0, 0.8);
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .gallery video {
+            pointer-events: auto;
+        }
+        .stop-button {
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4d4d;
             color: white;
             border: none;
-            padding: 12px 15px;
-            border-radius: 50%;
-            font-size: 20px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background 0.3s;
         }
-        .button:hover {
-            background: red;
+        .stop-button:hover {
+            background-color: #cc0000;
         }
-
-        /* Home Button */
-        #homeButton {
-            top: 15px;
-            left: 15px;
-            font-size: 18px;
-            padding: 12px;
-            border-radius: 10px;
-        }
-
-        /* Play Button */
-        #playButton {
-            bottom: 15px;
-            right: 15px;
-            font-size: 24px;
-            width: 55px;
-            height: 55px;
-            text-align: center;
-            line-height: 55px;
-        }
-
-        #playButton:hover {
-            background: rgba(255, 77, 77, 0.9);
-            color: white;
-        }
-
-        /* Video Container (Horizontal Scroll) */
-        .video-container {
-            width: 80%;
-            margin: 50px auto;
-            overflow-x: auto;
-            white-space: nowrap;
-            display: flex;
-            gap: 10px;
-            padding-bottom: 10px;
-        }
-
-        .video-container video {
-            width: 100%;
-            max-width: 250px; /* Matches images */
-            border-radius: 10px;
-        }
-
-        /* Image Gallery */
-        .wrapper {
-            width: 80%;
-            margin: 50px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            grid-gap: 30px;
-        }
-
-        .wrapper img {
-            width: 100%;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .wrapper img:hover {
-            transform: scale(0.9);
+        @media (max-width: 600px) {
+            .gallery {
+                column-count: 2;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Background Music -->
-    <audio id="bgMusic" src="snow.mp3" preload="metadata"></audio>
-
-    <!-- Home Button -->
-    <button id="homeButton" class="button" onclick="window.location.href='index.html'">🏠</button>
-
-    <!-- Play Button -->
-    <button id="playButton" class="button">▶</button>
-
-    <!-- Video Player (Scrollable) -->
-    <div class="video-container">
-        <video controls playsinline>
-            <source src="video1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video controls playsinline>
-            <source src="video2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video controls playsinline>
-            <source src="video3.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video controls playsinline>
-            <source src="video4.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <div class="gallery">
+        <div class="gallery-item"><video muted loop><source src="video1.mp4" type="video/mp4"></video></div>
+        <div class="gallery-item"><img src="images/image1.png" alt="Gallery Image 1" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image2.jpg" alt="Gallery Image 2" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><video muted loop><source src="video2.mp4" type="video/mp4"></video></div>
+        <div class="gallery-item"><img src="images/image3.jpg" alt="Gallery Image 3" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><video muted loop><source src="video3.mp4" type="video/mp4"></video></div>
+        <div class="gallery-item"><img src="images/image4.jpg" alt="Gallery Image 4" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><video muted loop><source src="video4.mp4" type="video/mp4"></video></div>
+        <div class="gallery-item"><img src="images/image5.jpg" alt="Gallery Image 5" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image6.jpg" alt="Gallery Image 6" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image7.jpg" alt="Gallery Image 7" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image8.jpg" alt="Gallery Image 8" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image9.jpg" alt="Gallery Image 9" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image10.jpg" alt="Gallery Image 10" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image11.jpg" alt="Gallery Image 11" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image12.jpg" alt="Gallery Image 12" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image13.jpg" alt="Gallery Image 13" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image14.jpg" alt="Gallery Image 14" onclick="openFullscreen(this)"></div>
+        <div class="gallery-item"><img src="images/image15.jpg" alt="Gallery Image 15" onclick="openFullscreen(this)"></div>
     </div>
-
-    <!-- Image Gallery -->
-    <div class="wrapper">
-        <img src="images/image1.png" />
-        <img src="images/image2.jpg" />
-        <img src="images/image3.jpg" />
-        <img src="images/image4.jpg" />
-        <img src="images/image5.jpg" />
-        <img src="images/image6.jpg" />
-        <img src="images/image7.jpg" />
-        <img src="images/image8.jpg" />
-        <img src="images/image9.jpg" />
-        <img src="images/image10.jpg"/>
-        <img src="images/image11.jpg" />
-        <img src="images/image12.jpg" />
-        <img src="images/image13.jpg" />
-        <img src="images/image14.jpg" />
-        <img src="images/image15.jpg" />
-        <img src="images/image16.jpg" />
-        <img src="images/image17.jpg" />
-        <img src="images/image18.jpg" />
-        <img src="images/image19.jpg" />
-        <img src="images/image20.jpg" />
-        <img src="images/image21.jpg" />
-        <img src="images/image22.jpg" />
+    <button class="stop-button" onclick="stopAllVideos()">Stop All Videos</button>
+    <div id="fullscreenViewer" class="fullscreen" style="display: none;" onclick="closeFullscreen()">
+        <img id="fullscreenImage" src="">
     </div>
-
     <script>
-        let isPlaying = false;
-        const music = document.getElementById('bgMusic');
-        const playButton = document.getElementById('playButton');
-
-        function toggleMusic() {
-            if (isPlaying) {
-                music.pause();
-                playButton.innerHTML = "▶"; // Play icon
-            } else {
-                music.play().catch(error => console.log("Playback prevented:", error));
-                playButton.innerHTML = "⏸"; // Pause icon
-            }
-            isPlaying = !isPlaying;
+        document.querySelectorAll("video").forEach(video => {
+            video.addEventListener("mouseenter", () => {
+                video.play();
+            });
+            video.addEventListener("mouseleave", () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+            video.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (video.paused) {
+                    video.muted = false;
+                    video.controls = true;
+                    video.play();
+                } else {
+                    video.pause();
+                    video.muted = true;
+                    video.controls = false;
+                }
+            });
+        });
+        function openFullscreen(img) {
+            document.getElementById("fullscreenImage").src = img.src;
+            document.getElementById("fullscreenViewer").style.display = "flex";
         }
-
-        // Start music only after user interaction
-        playButton.addEventListener("click", toggleMusic);
+        function closeFullscreen() {
+            document.getElementById("fullscreenViewer").style.display = "none";
+        }
+        function stopAllVideos() {
+            document.querySelectorAll("video").forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+                video.muted = true;
+                video.controls = false;
+            });
+        }
     </script>
-
 </body>
 </html>
